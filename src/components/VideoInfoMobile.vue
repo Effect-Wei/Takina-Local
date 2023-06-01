@@ -1,15 +1,13 @@
 <script setup>
 import { computed, onMounted, reactive } from "vue"
-import { useQuasar } from "quasar"
 import MediaProcessor from "./MediaProcessor.vue"
 import StaffInfoMobile from "./StaffInfoMobile.vue"
 
 const TAKINA_API = "https://api.takina.one/search"
 
-const $q = useQuasar()
 const state = reactive({
   loaded: false,
-  videoInfo: $q.sessionStorage.getItem("videoInfo"),
+  videoInfo: {},
   folded: true,
   rotate: 0,
   descHeight: computed(() => {
@@ -20,16 +18,6 @@ const props = defineProps({
   videoId: {
     type: String,
     default: ""
-  },
-  taskId: {
-    type: String,
-    default: ""
-  },
-  addons: {
-    type: Array,
-    default() {
-      return []
-    }
   }
 })
 
@@ -39,21 +27,18 @@ function switchFold() {
 }
 
 onMounted(async () => {
-  if (state.videoInfo != null && state.videoInfo.bvid === props.videoId) {
-    state.loaded = true
-    return
-  }
-
-  let resp = await fetch(TAKINA_API, {
+  await fetch(TAKINA_API, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ url: props.videoId })
   })
-  let respJson = await resp.json()
-
-  state.videoInfo = respJson.video_info
-  state.loaded = true
-  $q.sessionStorage.set("videoInfo", state.videoInfo)
+    .then(async (resp) => {
+      return resp.json()
+    })
+    .then(async (json) => {
+      state.videoInfo = json.video_info
+      state.loaded = true
+    })
 })
 </script>
 

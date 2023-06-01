@@ -11,7 +11,6 @@ const state = reactive({
   videoQualityOptions: [],
   msg: "",
   loaded: false,
-  started: false,
   indeterminate: false,
   progress: 0,
   isDarkActive: $q.dark.isActive,
@@ -72,7 +71,6 @@ watch(
 )
 
 async function run() {
-  state.started = true
   await fetchMedia()
   await transcode()
   await exportMedia()
@@ -194,6 +192,9 @@ async function exportMedia() {
 }
 
 onMounted(async () => {
+  state.msg = "Loading Takina components..."
+  state.indeterminate = true
+
   for (let i = 0; i < props.videoInfo.dash.video.length; i++) {
     const video = props.videoInfo.dash.video[i]
     let option = {
@@ -212,6 +213,7 @@ onMounted(async () => {
   }
 
   await ffmpeg.load()
+  state.msg = "Waiting for your command~"
   state.loaded = true
 })
 </script>
@@ -278,7 +280,7 @@ onMounted(async () => {
     <q-btn
       class="submit-button q-mb-sm"
       :label="$t('text.download')"
-      :loading="!state.loaded"
+      :disable="!state.loaded"
       color="primary"
       @click.prevent="run()"
     />
@@ -290,8 +292,8 @@ onMounted(async () => {
       :href="`https://www.bilibili.com/video/${props.videoInfo.bvid}`"
       target="_blank"
     />
+
     <div
-      v-if="true"
       :class="{
         'progress-bar': true,
         'progress-bar-dark-bg': state.isDarkActive

@@ -1,12 +1,11 @@
 <script setup>
-import { computed, reactive, watch } from "vue"
+import { computed, reactive } from "vue"
 import { useQuasar } from "quasar"
 
 const $q = useQuasar()
 const state = reactive({
   folded: true,
-  rotate: 0,
-  isDarkActive: $q.dark.isActive
+  rotate: 0
 })
 const props = defineProps({
   videoInfo: {
@@ -20,13 +19,6 @@ const onlyOneStaff = computed(() => {
   return props.videoInfo.total_staffs === 1 ? true : false
 })
 
-watch(
-  () => $q.dark.isActive,
-  (isDarkActive) => {
-    state.isDarkActive = isDarkActive
-  }
-)
-
 function switchFold() {
   state.folded = !state.folded
   state.rotate += 180
@@ -39,7 +31,7 @@ function switchFold() {
       :class="{
         'staff-info-header': true,
         'cursor-pointer': props.videoInfo.total_staffs > 4,
-        'staff-info-header-dark-bg': state.isDarkActive
+        'staff-info-header-dark-bg': $q.dark.isActive
       }"
       @click.prevent="switchFold"
     >
@@ -91,7 +83,7 @@ function switchFold() {
         <div class="column flex-center">
           <div class="staff-info q-mr-sm">
             <a
-              :class="{ 'text-white': state.isDarkActive }"
+              :class="{ 'text-white': $q.dark.isActive }"
               :href="`https://space.bilibili.com/${staff.mid}`"
               target="_blank"
             >

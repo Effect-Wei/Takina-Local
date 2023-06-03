@@ -1,6 +1,6 @@
 <script setup>
 import { createFFmpeg } from "@ffmpeg/ffmpeg"
-import { computed, onMounted, reactive, watch } from "vue"
+import { onMounted, reactive } from "vue"
 import { useQuasar } from "quasar"
 const $q = useQuasar()
 const state = reactive({
@@ -13,10 +13,6 @@ const state = reactive({
   loaded: false,
   indeterminate: false,
   progress: 0,
-  isDarkActive: $q.dark.isActive,
-  bgColor: computed(() => {
-    return $q.dark.isActive ? "bg1-dark" : "bg1"
-  }),
   previousDownloadConfig: {
     downloadType: null,
     audioQuality: null,
@@ -68,13 +64,6 @@ const quality = {
     13: "AV1"
   }
 }
-
-watch(
-  () => $q.dark.isActive,
-  (isDarkActive) => {
-    state.isDarkActive = isDarkActive
-  }
-)
 
 async function run() {
   if (
@@ -247,7 +236,7 @@ onMounted(async () => {
       v-model="state.videoQuality"
       class="video-quality-selector q-my-xs"
       :options="state.videoQualityOptions"
-      :bg-color="state.bgColor"
+      :bg-color="$q.dark.isActive ? 'bg1-dark' : 'bg1'"
       :label="$t('text.videoQuality')"
       emit-value
       map-options
@@ -260,7 +249,7 @@ onMounted(async () => {
       v-model="state.audioQuality"
       class="audio-quality-selector q-my-xs"
       :options="state.audioQualityOptions"
-      :bg-color="state.bgColor"
+      :bg-color="$q.dark.isActive ? 'bg1-dark' : 'bg1'"
       :label="$t('text.audioQuality')"
       square
       emit-value
@@ -273,7 +262,7 @@ onMounted(async () => {
     <div
       :class="{
         'dl-type-wrapper': true,
-        'dl-type-wrapper-dark-bg': state.isDarkActive,
+        'dl-type-wrapper-dark-bg': $q.dark.isActive,
         'q-mt-xs': true,
         'q-mb-sm': true
       }"
@@ -319,7 +308,7 @@ onMounted(async () => {
     <div
       :class="{
         'progress-bar': true,
-        'progress-bar-dark-bg': state.isDarkActive
+        'progress-bar-dark-bg': $q.dark.isActive
       }"
     >
       <q-circular-progress

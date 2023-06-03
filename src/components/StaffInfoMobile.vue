@@ -1,11 +1,8 @@
 <script setup>
-import { computed, reactive, watch } from "vue"
+import { computed } from "vue"
 import { useQuasar } from "quasar"
 
 const $q = useQuasar()
-const state = reactive({
-  isDarkActive: $q.dark.isActive
-})
 const props = defineProps({
   videoInfo: {
     type: Object,
@@ -17,13 +14,6 @@ const props = defineProps({
 const onlyOneStaff = computed(() => {
   return props.videoInfo.total_staffs === 1 ? true : false
 })
-
-watch(
-  () => $q.dark.isActive,
-  (isDarkActive) => {
-    state.isDarkActive = isDarkActive
-  }
-)
 </script>
 
 <template>
@@ -31,7 +21,7 @@ watch(
     <div
       :class="{
         'staff-info-header': true,
-        'staff-info-header-dark-bg': state.isDarkActive
+        'staff-info-header-dark-bg': $q.dark.isActive
       }"
     >
       <span v-if="onlyOneStaff">{{ $t("text.creator") }}</span>
@@ -72,7 +62,7 @@ watch(
         <a
           :class="{
             'staff-name': true,
-            'text-white': state.isDarkActive
+            'text-white': $q.dark.isActive
           }"
           :href="`https://space.bilibili.com/${staff.mid}`"
           target="_blank"

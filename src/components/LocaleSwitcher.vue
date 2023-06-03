@@ -1,25 +1,15 @@
 <script setup>
-import { onMounted, reactive, watch } from "vue"
+import { onMounted } from "vue"
 import { useI18n } from "vue-i18n"
 import { useQuasar } from "quasar"
 
 const $q = useQuasar()
 const i18n = useI18n({ useScope: "global" })
-const state = reactive({
-  isDarkActive: $q.dark.isActive
-})
 
 function switchLocale(targetLocale) {
   i18n.locale.value = targetLocale
   $q.localStorage.set("language", targetLocale)
 }
-
-watch(
-  () => $q.dark.isActive,
-  (isDarkActive) => {
-    state.isDarkActive = isDarkActive
-  }
-)
 
 onMounted(() => {
   let targetLocale = $q.localStorage.getItem("language")
@@ -43,7 +33,7 @@ onMounted(() => {
         'locale-list': true,
         'rounded-borders': true,
         'text-dark': true,
-        'locale-list-dark': state.isDarkActive
+        'locale-list-dark': $q.dark.isActive
       }"
       bordered
       padding

@@ -16,7 +16,13 @@ const state = reactive({
   isDarkActive: $q.dark.isActive,
   bgColor: computed(() => {
     return $q.dark.isActive ? "bg1-dark" : "bg1"
-  })
+  }),
+  previousDownloadConfig: {
+    downloadType: null,
+    audioQuality: null,
+    videoQuality: null
+  },
+  mediaExportLink: document.createElement("a")
 })
 const props = defineProps({
   videoInfo: {
@@ -71,6 +77,21 @@ watch(
 )
 
 async function run() {
+  if (
+    state.downloadType === state.previousDownloadConfig.downloadType &&
+    state.audioQuality === state.previousDownloadConfig.audioQuality &&
+    state.videoQuality === state.previousDownloadConfig.videoQuality
+  ) {
+    state.mediaExportLink.click()
+    return
+  }
+
+  state.previousDownloadConfig = {
+    downloadType: state.downloadType,
+    audioQuality: state.audioQuality,
+    videoQuality: state.videoQuality
+  }
+
   await fetchMedia()
   await transcode()
   await exportMedia()
@@ -178,17 +199,17 @@ async function exportMedia() {
     state.downloadType == 2 ? "audio.mp3" : "video.mp4"
   )
 
-  let link = document.createElement("a")
-
-  link.download = `${props.videoInfo.title} - ${videoQuality} [${codec}] ${audioQuality}`
-  link.style.display = "none"
-  link.href = URL.createObjectURL(
+  state.mediaExportLink.download =
+    state.downloadType == 2
+      ? `${props.videoInfo.title} - ${audioQuality}`
+      : `${props.videoInfo.title} - ${videoQuality} [${codec}] ${audioQuality}`
+  state.mediaExportLink.href = URL.createObjectURL(
     new Blob([data.buffer], {
       type: state.downloadType == 2 ? "audio/mpeg" : "video/mp4"
     })
   )
-  document.body.appendChild(link)
-  link.click()
+
+  state.mediaExportLink.click()
 }
 
 onMounted(async () => {
@@ -211,8 +232,10 @@ onMounted(async () => {
     }
     state.audioQualityOptions.push(option)
   }
-
+  state.mediaExportLink.style.display = "none"
+  document.body.appendChild(state.mediaExportLink)
   await ffmpeg.load()
+
   state.msg = "Waiting for your command~"
   state.loaded = true
 })

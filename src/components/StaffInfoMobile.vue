@@ -90,7 +90,7 @@ a {
   height: 10vmin;
   font-size: 3.5vmin;
   line-height: 10vmin;
-  border-radius: 6px;
+  border-radius: 4px;
   background: $bg1;
 }
 

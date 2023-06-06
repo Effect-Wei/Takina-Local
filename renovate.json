@@ -4,6 +4,6 @@
     "config:base"
   ],
   "constraints": {
-      "node": "^16.17.0"
-    }
+    "node": "^16.17.0"
+  }
 }

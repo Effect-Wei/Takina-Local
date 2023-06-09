@@ -10,6 +10,7 @@
     "lint": "eslint --fix --ext .js,.vue ./",
     "format": "prettier --write \"**/*.{js,vue,scss,html,md,json}\" --ignore-path .gitignore",
     "test": "echo \"No test specified\" && exit 0",
+    "dev": "quasar dev",
     "build": "quasar build"
   },
   "dependencies": {
@@ -35,7 +36,7 @@
     "prettier": "^2.8.8"
   },
   "engines": {
-    "node": "^18 || ^16 || ^14.19",
+    "node": "^18 || ^16",
     "npm": ">= 6.13.4",
     "yarn": ">= 1.21.1"
   }

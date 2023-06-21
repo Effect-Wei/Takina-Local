@@ -34,6 +34,10 @@ onMounted(async () => {
     })
     .then(async (json) => {
       state.videoInfo = json.video_info
+      let coverUrl = new URL(state.videoInfo.pic)
+      coverUrl.protocol = "https:"
+      state.videoInfo.pic = coverUrl.toString()
+
       state.loaded = true
     })
 })

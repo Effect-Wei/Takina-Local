@@ -9,11 +9,6 @@ const desktop = [
         component: () => import("pages/desktop/IndexPage.vue")
       },
       {
-        path: "task/:taskId",
-        name: "check",
-        component: () => import("pages/desktop/CheckTaskStatus.vue")
-      },
-      {
         path: "video/:videoId",
         name: "info",
         component: () => import("pages/desktop/VideoInfoPage.vue")
@@ -35,11 +30,6 @@ const mobile = [
         path: "",
         name: "index",
         component: () => import("pages/mobile/IndexPage.vue")
-      },
-      {
-        path: "task/:taskId",
-        name: "check",
-        component: () => import("pages/mobile/CheckTaskStatus.vue")
       },
       {
         path: "video/:videoId",

@@ -10,6 +10,7 @@ const route = useRoute()
 const state = reactive({
   loaded: false,
   videoId: route.params.videoId,
+  videoNotFound: false,
   videoInfo: {},
   folded: true,
   rotate: 0,
@@ -30,7 +31,19 @@ onMounted(async () => {
     body: JSON.stringify({ url: state.videoId })
   })
     .then(async (resp) => {
-      return resp.json()
+      if (resp.ok) {
+        return resp.json()
+      } else {
+        state.videoNotFound = true
+        return {
+          video_info: {
+            title: "啊叻？视频不见了？",
+            tname: "那分区自然也不知道了吧",
+            pic: "https://s1.hdslb.com/bfs/static/jinkela/video/asserts/no_video.png",
+            desc: "所以简介也没有啦!"
+          }
+        }
+      }
     })
     .then(async (json) => {
       state.videoInfo = json.video_info
@@ -46,9 +59,10 @@ onMounted(async () => {
 <template>
   <div v-if="state.loaded">
     <q-img
-      class="cover"
+      class="cover q-mx-auto"
       :src="state.videoInfo.pic"
       :initial-ratio="1146 / 717"
+      :width="state.videoNotFound ? '160px' : undefined"
       fit="contain"
       alt="Video cover"
       referrerpolicy="no-referrer"
@@ -56,6 +70,7 @@ onMounted(async () => {
 
     <div class="video-info-wrapper full-width row">
       <staff-info-mobile
+        v-if="state.videoNotFound === false"
         class="full-width"
         :video-info="state.videoInfo"
       />
@@ -93,7 +108,10 @@ onMounted(async () => {
         </div>
       </div>
 
-      <div class="tools-list full-width q-mt-sm">
+      <div
+        v-if="state.videoNotFound === false"
+        class="tools-list full-width q-mt-sm"
+      >
         <div class="tools-list">
           <media-processor
             class="task-creator"
@@ -109,6 +127,10 @@ onMounted(async () => {
 a {
   text-decoration: none;
   color: #18191c;
+}
+
+.cover {
+  display: block;
 }
 
 .video-info-wrapper {

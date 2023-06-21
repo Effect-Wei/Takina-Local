@@ -10,6 +10,7 @@ const route = useRoute()
 const state = reactive({
   loaded: false,
   videoId: route.params.videoId,
+  videoNotFound: false,
   videoInfo: {}
 })
 
@@ -20,7 +21,19 @@ onMounted(async () => {
     body: JSON.stringify({ url: state.videoId })
   })
     .then(async (resp) => {
-      return resp.json()
+      if (resp.ok) {
+        return resp.json()
+      } else {
+        state.videoNotFound = true
+        return {
+          video_info: {
+            title: "啊叻？视频不见了？",
+            tname: "那分区自然也不知道了吧",
+            pic: "https://s1.hdslb.com/bfs/static/jinkela/video/asserts/no_video.png",
+            desc: "所以简介也没有啦!"
+          }
+        }
+      }
     })
     .then(async (json) => {
       state.videoInfo = json.video_info
@@ -60,7 +73,10 @@ onMounted(async () => {
         </div>
       </div>
 
-      <div class="right-container column col-auto q-ml-lg">
+      <div
+        v-if="state.videoNotFound === false"
+        class="right-container column col-auto q-ml-lg"
+      >
         <staff-info :video-info="state.videoInfo" />
 
         <div class="tools-list">

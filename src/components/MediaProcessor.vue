@@ -226,6 +226,8 @@ onMounted(async () => {
   await ffmpeg.load()
 
   state.msg = "Waiting for your command~"
+  state.progress = 100
+  state.indeterminate = false
   state.loaded = true
 })
 </script>

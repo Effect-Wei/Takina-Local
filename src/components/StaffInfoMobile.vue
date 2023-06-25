@@ -20,6 +20,7 @@ const onlyOneStaff = computed(() => {
   <div class="staff-info-container">
     <div
       :class="{
+        'q-px-md': true,
         'staff-info-header': true,
         'staff-info-header-dark-bg': $q.dark.isActive
       }"
@@ -85,7 +86,6 @@ a {
 
 .staff-info-header {
   margin-bottom: 4px;
-  padding: 0 16px;
   width: 100%;
   height: 10vmin;
   font-size: 3.5vmin;

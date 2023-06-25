@@ -28,7 +28,7 @@
 
       <div class="flex flex-center button-area">
         <q-btn
-          class="button"
+          class="button q-px-md"
           :label="$t('text.queryVideoInfo')"
           color="primary"
           type="submit"
@@ -36,7 +36,7 @@
           @click.prevent="onSubmit"
         />
         <q-btn
-          class="button"
+          class="button q-px-md"
           :label="$t('text.feelingLucky')"
           color="primary"
           type="submit"
@@ -102,7 +102,6 @@ async function onSubmit() {
 
 .button {
   margin: 11px 6px;
-  padding: 0 16px;
 }
 
 .button-area {

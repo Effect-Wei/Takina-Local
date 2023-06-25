@@ -29,6 +29,7 @@ function switchFold() {
   <div class="staff-info-container">
     <div
       :class="{
+        'q-px-md': true,
         'staff-info-header': true,
         'cursor-pointer': props.videoInfo.total_staffs > 4,
         'staff-info-header-dark-bg': $q.dark.isActive
@@ -106,9 +107,7 @@ a {
 }
 
 .staff-info-header {
-  padding: 0 16px;
   width: 100%;
-  min-width: 250px;
   height: 44px;
   line-height: 44px;
   border-radius: 4px;

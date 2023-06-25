@@ -216,16 +216,24 @@ onMounted(async () => {
   for (let i = 0; i < props.videoInfo.dash.audio.length; i++) {
     const audio = props.videoInfo.dash.audio[i]
     let option = {
-      label: `${quality.audio[audio.id]} [MP4A]`,
+      label: `${quality.audio[audio.id]}`,
       value: i
     }
     state.audioQualityOptions.push(option)
   }
   state.mediaExportLink.style.display = "none"
   document.body.appendChild(state.mediaExportLink)
-  await ffmpeg.load()
 
-  state.msg = "Waiting for your command~"
+  // eslint-disable-next-line prettier/prettier
+  await ffmpeg.load()
+    .then(() => {
+      state.msg = "Waiting for your command~"
+    })
+    .catch((error) => {
+      state.msg = "Loading failed, please refresh this page."
+      console.error(error)
+    })
+
   state.progress = 100
   state.indeterminate = false
   state.loaded = true
@@ -233,7 +241,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <form>
+  <form class="full-width">
     <q-select
       v-model="state.videoQuality"
       class="video-quality-selector q-my-xs"
@@ -306,24 +314,27 @@ onMounted(async () => {
       :href="`https://www.bilibili.com/video/${props.videoInfo.bvid}`"
       target="_blank"
     />
-
-    <div
-      :class="{
-        'progress-bar': true,
-        'progress-bar-dark-bg': $q.dark.isActive
-      }"
-    >
-      <q-circular-progress
-        :indeterminate="state.indeterminate"
-        :value="state.progress"
-        class="q-mr-sm"
-        color="primary"
-        size="48px"
-        rounded
-      />
-      {{ state.msg }}
-    </div>
   </form>
+
+  <div
+    :class="{
+      flex: true,
+      'items-center': true,
+      'q-px-md': true,
+      'progress-bar': true,
+      'progress-bar-dark-bg': $q.dark.isActive
+    }"
+  >
+    <q-circular-progress
+      :indeterminate="state.indeterminate"
+      :value="state.progress"
+      class="q-mr-sm"
+      color="primary"
+      size="48px"
+      rounded
+    />
+    <span class="status-msg">{{ state.msg }}</span>
+  </div>
 </template>
 
 <style lang="scss">
@@ -348,11 +359,8 @@ onMounted(async () => {
 }
 
 .progress-bar {
-  padding: 16px;
   width: 100%;
-  min-width: 250px;
   height: 80px;
-  line-height: 44px;
   border-radius: 4px;
   background: $bg1;
 }
@@ -364,6 +372,10 @@ onMounted(async () => {
 .submit-button {
   width: 45%;
   border-radius: 4px;
+}
+
+.status-msg {
+  width: calc(100% - 56px);
 }
 
 .bili-button {

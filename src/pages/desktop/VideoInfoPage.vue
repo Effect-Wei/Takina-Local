@@ -78,13 +78,10 @@ onMounted(async () => {
         class="right-container column col-auto q-ml-lg"
       >
         <staff-info :video-info="state.videoInfo" />
-
-        <div class="tools-list">
-          <media-processor
-            class="task-creator"
-            :video-info="state.videoInfo"
-          />
-        </div>
+        <media-processor
+          class="task-creator"
+          :video-info="state.videoInfo"
+        />
       </div>
     </div>
   </div>

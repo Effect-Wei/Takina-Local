@@ -108,17 +108,11 @@ onMounted(async () => {
         </div>
       </div>
 
-      <div
+      <media-processor
         v-if="state.videoNotFound === false"
-        class="tools-list full-width q-mt-sm"
-      >
-        <div class="tools-list">
-          <media-processor
-            class="task-creator"
-            :video-info="state.videoInfo"
-          />
-        </div>
-      </div>
+        class="task-creator full-width q-mt-sm"
+        :video-info="state.videoInfo"
+      />
     </div>
   </div>
 </template>

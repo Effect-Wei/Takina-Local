@@ -9,7 +9,7 @@
       />
     </div>
 
-    <form class="search-area column flex-center">
+    <form class="search-area q-mx-md column flex-center">
       <q-input
         id="searchBox"
         v-model="state.searchUrl"
@@ -27,14 +27,14 @@
 
       <div class="flex flex-center button-area">
         <q-btn
-          class="button"
+          class="button q-px-md"
           :label="$t('text.queryVideoInfo')"
           color="primary"
           type="submit"
           @click.prevent="onSubmit"
         />
         <q-btn
-          class="button"
+          class="button q-px-md"
           :label="$t('text.feelingLucky')"
           color="primary"
           type="submit"
@@ -87,10 +87,6 @@ async function onSubmit() {
   display: block;
 }
 
-.search-area {
-  margin: 0 16px;
-}
-
 .search-box {
   width: 100%;
   max-width: 584px;
@@ -99,7 +95,6 @@ async function onSubmit() {
 
 .button {
   margin: 11px 6px;
-  padding: 0 16px;
 }
 
 .button-area {

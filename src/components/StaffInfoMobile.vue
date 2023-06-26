@@ -21,6 +21,7 @@ const onlyOneStaff = computed(() => {
     <div
       :class="{
         'q-px-md': true,
+        'full-width': true,
         'staff-info-header': true,
         'staff-info-header-dark-bg': $q.dark.isActive
       }"
@@ -38,7 +39,7 @@ const onlyOneStaff = computed(() => {
       />
     </div>
 
-    <div class="staff-container row">
+    <div class="staff-container full-width row">
       <div
         v-for="(staff, index) in props.videoInfo.staff"
         :key="index"
@@ -86,7 +87,6 @@ a {
 
 .staff-info-header {
   margin-bottom: 4px;
-  width: 100%;
   height: 10vmin;
   font-size: 3.5vmin;
   line-height: 10vmin;
@@ -110,7 +110,6 @@ a {
 }
 
 .staff-container {
-  width: 100%;
   flex-wrap: nowrap;
   overflow: auto;
   scrollbar-width: none;
@@ -128,7 +127,7 @@ a {
 
 .staff-name {
   max-width: 100%;
-  font-size: 2vmin;
+  font-size: 3vmin;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -136,7 +135,7 @@ a {
 }
 
 .info-tag {
-  font-size: 2vmin;
+  font-size: 3vmin;
   color: #9499a0;
 }
 </style>

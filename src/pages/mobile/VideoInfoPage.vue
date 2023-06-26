@@ -57,64 +57,67 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div v-if="state.loaded">
-    <q-img
-      class="cover q-mx-auto"
-      :src="state.videoInfo.pic"
-      :initial-ratio="1146 / 717"
-      :width="state.videoNotFound ? '160px' : undefined"
-      fit="contain"
-      alt="Video cover"
-      referrerpolicy="no-referrer"
-    />
-
-    <div class="video-info-wrapper full-width row">
-      <staff-info-mobile
-        v-if="state.videoNotFound === false"
-        class="full-width"
-        :video-info="state.videoInfo"
+  <q-page>
+    <div v-if="state.loaded">
+      <q-img
+        class="cover q-mx-auto"
+        :src="state.videoInfo.pic"
+        :initial-ratio="1146 / 717"
+        :width="state.videoNotFound ? '160px' : undefined"
+        fit="contain"
+        alt="Video cover"
+        referrerpolicy="no-referrer"
       />
 
-      <div
-        class="title-area full-width q-mt-sm"
-        @click.prevent="switchFold"
-      >
-        <q-btn
-          class="fold-switcher"
-          icon="expand_more"
-          size="2.25vmin"
-          round
-          unelevated
-          :style="`transform: rotate(${state.rotate}deg);`"
+      <div class="video-info-wrapper full-width row">
+        <staff-info-mobile
+          v-if="state.videoNotFound === false"
+          class="full-width"
+          :video-info="state.videoInfo"
         />
-        <div class="title">
-          {{ state.videoInfo.title }}
+
+        <div
+          class="title-area full-width q-mt-sm"
+          @click.prevent="switchFold"
+        >
+          <q-btn
+            class="fold-switcher"
+            icon="expand_more"
+            size="2.25vmin"
+            round
+            unelevated
+            :style="`transform: rotate(${state.rotate}deg);`"
+          />
+          <div class="title">
+            {{ state.videoInfo.title }}
+          </div>
+          <div class="tname flex items-center">
+            {{ state.videoInfo.tname }}
+          </div>
         </div>
-        <div class="tname flex items-center">
-          {{ state.videoInfo.tname }}
+
+        <div
+          class="desc-container"
+          :style="
+            state.folded
+              ? 'max-height: 0px;'
+              : `max-height: ${state.descHeight}px;`
+          "
+        >
+          <div class="description">
+            {{ state.videoInfo.desc }}
+          </div>
+        </div>
+
+        <div
+          v-if="state.videoNotFound === false"
+          class="full-width q-mt-sm"
+        >
+          <media-processor :video-info="state.videoInfo" />
         </div>
       </div>
-
-      <div
-        class="desc-container"
-        :style="
-          state.folded
-            ? 'max-height: 0px;'
-            : `max-height: ${state.descHeight}px;`
-        "
-      >
-        <div class="description">
-          {{ state.videoInfo.desc }}
-        </div>
-      </div>
-
-      <media-processor
-        v-if="state.videoNotFound === false"
-        class="task-creator full-width q-mt-sm"
-        :video-info="state.videoInfo"
-      />
     </div>
-  </div>
+  </q-page>
 </template>
 
 <style scoped lang="scss">

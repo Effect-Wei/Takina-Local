@@ -1,8 +1,8 @@
 <template>
   <q-page class="column">
-    <div class="logo-area column items-center">
+    <div class="logo-area q-mx-auto q-mb-lg q-px-xl column items-center">
       <img
-        class="logo q-mt-auto"
+        class="logo"
         src="https://cdn.jsdelivr.net/gh/quasarframework/quasar-art/Brand/Logo/RGB/Horizontal/Dark%20background/QUASAR_logo_horizontal_dark_background_RGB.png"
         alt="Logo"
         referrerpolicy="no-referrer"
@@ -13,7 +13,7 @@
       <q-input
         id="searchBox"
         v-model="state.searchUrl"
-        class="search-box"
+        class="search-box full-width"
         clearable
         rounded
         outlined
@@ -25,16 +25,16 @@
         </template>
       </q-input>
 
-      <div class="flex flex-center button-area">
+      <div class="button-area q-mt-lg flex flex-center">
         <q-btn
-          class="button q-px-md"
+          class="q-mx-sm q-px-md"
           :label="$t('text.queryVideoInfo')"
           color="primary"
           type="submit"
           @click.prevent="onSubmit"
         />
         <q-btn
-          class="button q-px-md"
+          class="q-mx-sm q-px-md"
           :label="$t('text.feelingLucky')"
           color="primary"
           type="submit"
@@ -82,41 +82,16 @@ async function onSubmit() {
 </script>
 
 <style>
-.q-page {
-  height: 100%;
-  display: block;
-}
-
 .search-box {
-  width: 100%;
   max-width: 584px;
-  margin: 0 auto;
-}
-
-.button {
-  margin: 11px 6px;
-}
-
-.button-area {
-  padding-top: 18px;
 }
 
 .logo {
-  margin: 8px 0;
   max-height: 92px;
   max-width: 100%;
 }
 
 .logo-area {
-  padding: 0 60px;
-  margin: 104px auto 18px;
-}
-
-body,
-html,
-#q-app,
-.q-layout,
-.q-page-container {
-  height: 100%;
+  margin-top: 104px;
 }
 </style>

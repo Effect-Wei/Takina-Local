@@ -225,7 +225,8 @@ onMounted(async () => {
   document.body.appendChild(state.mediaExportLink)
 
   // eslint-disable-next-line prettier/prettier
-  await ffmpeg.load()
+  await ffmpeg
+    .load()
     .then(() => {
       state.msg = "Waiting for your command~"
     })
@@ -277,7 +278,14 @@ onMounted(async () => {
         'q-mb-sm': true
       }"
     >
-      <div class="dl-type">{{ $t("text.dlType") }}</div>
+      <span
+        :class="{
+          'dl-type': true,
+          'dl-type-dark-bg': $q.dark.isActive
+        }"
+      >
+        {{ $t("text.dlType") }}
+      </span>
       <q-option-group
         v-model="state.downloadType"
         class="dl-type-selector"
@@ -321,6 +329,7 @@ onMounted(async () => {
       flex: true,
       'items-center': true,
       'q-px-md': true,
+      'full-width': true,
       'progress-bar': true,
       'progress-bar-dark-bg': $q.dark.isActive
     }"
@@ -351,7 +360,11 @@ onMounted(async () => {
 .dl-type {
   margin-left: 10px;
   font-size: 1px;
-  color: #9499a0;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.dl-type-dark-bg {
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .dl-type-selector {
@@ -359,7 +372,6 @@ onMounted(async () => {
 }
 
 .progress-bar {
-  width: 100%;
   height: 80px;
   border-radius: 4px;
   background: $bg1;

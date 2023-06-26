@@ -26,10 +26,11 @@ function switchFold() {
 </script>
 
 <template>
-  <div class="staff-info-container">
+  <div class="staff-info-container full-width">
     <div
       :class="{
         'q-px-md': true,
+        'full-width': true,
         'staff-info-header': true,
         'cursor-pointer': props.videoInfo.total_staffs > 4,
         'staff-info-header-dark-bg': $q.dark.isActive
@@ -38,7 +39,7 @@ function switchFold() {
     >
       <span v-if="onlyOneStaff">{{ $t("text.creator") }}</span>
       <span v-if="!onlyOneStaff">{{ $t("text.creators") }}</span>
-      <span class="total-staff">
+      <span class="total-staff q-ml-xs">
         {{ props.videoInfo.total_staffs }} {{ $t("text.people") }}
       </span>
       <q-btn
@@ -63,14 +64,14 @@ function switchFold() {
       <div
         v-for="(staff, index) in props.videoInfo.staff"
         :key="index"
-        class="staff-card row items-center self-start"
+        class="staff-card q-px-sm row items-center"
       >
         <a
           :href="`https://space.bilibili.com/${staff.mid}`"
           target="_blank"
         >
           <q-avatar
-            class="q-mx-sm q-my-xs"
+            class="q-my-xs"
             size="44px"
           >
             <q-img
@@ -81,18 +82,20 @@ function switchFold() {
           </q-avatar>
         </a>
 
-        <div class="column flex-center">
-          <div class="staff-info q-mr-sm">
-            <a
-              :class="{ 'text-white': $q.dark.isActive }"
-              :href="`https://space.bilibili.com/${staff.mid}`"
-              target="_blank"
-            >
-              {{ staff.name }}
-            </a>
-            <div class="info-tag">
-              {{ staff.title }}
-            </div>
+        <div class="staff-info q-ml-sm column justify-start">
+          <a
+            :class="{
+              'staff-name': true,
+              'text-white': $q.dark.isActive,
+              ellipsis: true
+            }"
+            :href="`https://space.bilibili.com/${staff.mid}`"
+            target="_blank"
+          >
+            {{ staff.name }}
+          </a>
+          <div class="info-tag">
+            {{ staff.title }}
           </div>
         </div>
       </div>
@@ -107,7 +110,6 @@ a {
 }
 
 .staff-info-header {
-  width: 100%;
   height: 44px;
   line-height: 44px;
   border-radius: 4px;
@@ -125,7 +127,6 @@ a {
 }
 
 .total-staff {
-  margin-left: 5px;
   color: #9499a0;
 }
 
@@ -135,7 +136,12 @@ a {
 }
 
 .staff-info {
+  width: calc(100% - 52px);
+}
+
+.staff-name {
   font-size: 13px;
+  max-width: 100%;
 }
 
 .info-tag {

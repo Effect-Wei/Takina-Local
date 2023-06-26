@@ -42,7 +42,7 @@ onMounted(() => {
   <q-fab
     direction="down"
     :icon="$q.dark.isActive ? 'dark_mode' : 'light_mode'"
-    padding="10px"
+    padding="8px"
     vertical-actions-align="right"
     flat
   >

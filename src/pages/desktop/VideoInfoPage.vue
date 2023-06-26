@@ -47,44 +47,46 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div v-if="state.loaded">
-    <div class="video-info-wrapper row justify-center items-start">
-      <div class="cover-area col">
-        <q-img
-          class="cover"
-          :src="state.videoInfo.pic"
-          :initial-ratio="1146 / 717"
-          fit="contain"
-          alt="Video cover"
-          referrerpolicy="no-referrer"
-        />
+  <q-page>
+    <div v-if="state.loaded">
+      <div class="video-info-wrapper row justify-center items-start">
+        <div class="cover-area col">
+          <q-img
+            class="cover"
+            :src="state.videoInfo.pic"
+            :initial-ratio="1146 / 717"
+            fit="contain"
+            alt="Video cover"
+            referrerpolicy="no-referrer"
+          />
 
-        <div class="video-info-container q-mt-md q-px-sm">
-          <div class="title text-weight-medium">
-            {{ state.videoInfo.title }}
-          </div>
-          <div class="tname flex items-center">
-            {{ state.videoInfo.tname }}
-          </div>
+          <div class="video-info-container q-mt-md q-px-sm">
+            <div class="title text-weight-medium">
+              {{ state.videoInfo.title }}
+            </div>
+            <div class="tname flex items-center">
+              {{ state.videoInfo.tname }}
+            </div>
 
-          <div class="description q-mt-md q-px-sm">
-            {{ state.videoInfo.desc }}
+            <div class="description q-mt-md q-px-sm">
+              {{ state.videoInfo.desc }}
+            </div>
           </div>
         </div>
-      </div>
 
-      <div
-        v-if="state.videoNotFound === false"
-        class="right-container column col-auto q-ml-lg"
-      >
-        <staff-info :video-info="state.videoInfo" />
-        <media-processor
-          class="task-creator"
-          :video-info="state.videoInfo"
-        />
+        <div
+          v-if="state.videoNotFound === false"
+          class="right-container column col-auto q-ml-lg"
+        >
+          <staff-info :video-info="state.videoInfo" />
+          <media-processor
+            class="task-creator"
+            :video-info="state.videoInfo"
+          />
+        </div>
       </div>
     </div>
-  </div>
+  </q-page>
 </template>
 
 <style scoped lang="scss">

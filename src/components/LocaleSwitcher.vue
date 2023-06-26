@@ -24,7 +24,7 @@ onMounted(() => {
   <q-fab
     direction="down"
     icon="translate"
-    padding="10px"
+    padding="8px"
     vertical-actions-align="right"
     flat
   >

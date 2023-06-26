@@ -358,8 +358,8 @@ onMounted(async () => {
 }
 
 .dl-type {
-  margin-left: 10px;
-  font-size: 14px;
+  margin-left: 12px;
+  font-size: 10px;
   color: rgba(0, 0, 0, 0.6);
 }
 

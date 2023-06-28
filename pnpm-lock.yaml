@@ -21,8 +21,8 @@ dependencies:
     specifier: ^9.2.2
     version: 9.2.2(vue@3.3.4)
   vue-router:
-    specifier: ^4.2.1
-    version: 4.2.1(vue@3.3.4)
+    specifier: ^4.2.2
+    version: 4.2.2(vue@3.3.4)
 
 devDependencies:
   '@ffmpeg/core':
@@ -33,7 +33,7 @@ devDependencies:
     version: 6.0.0(vite@2.9.15)(vue-i18n@9.2.2)
   '@quasar/app-vite':
     specifier: ^1.4.3
-    version: 1.4.3(eslint@8.43.0)(quasar@2.12.0)(vue-router@4.2.1)(vue@3.3.4)
+    version: 1.4.3(eslint@8.43.0)(quasar@2.12.0)(vue-router@4.2.2)(vue@3.3.4)
   '@types/node':
     specifier: 20.3.2
     version: 20.3.2
@@ -287,7 +287,7 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@quasar/app-vite@1.4.3(eslint@8.43.0)(quasar@2.12.0)(vue-router@4.2.1)(vue@3.3.4):
+  /@quasar/app-vite@1.4.3(eslint@8.43.0)(quasar@2.12.0)(vue-router@4.2.2)(vue@3.3.4):
     resolution: {integrity: sha512-5iMs1sk6fyYTFoRVySwFXWL/PS23UEsdk+YSFejhXnSs5fVDmb2GQMguCHwDl3jPIHjZ7A+XKkb2iWx9pjiPXw==}
     engines: {node: ^24 || ^22 || ^20 || ^18 || ^16 || ^14.19, npm: '>= 6.14.12', yarn: '>= 1.17.3'}
     hasBin: true
@@ -351,7 +351,7 @@ packages:
       table: 6.8.1
       vite: 2.9.15(sass@1.32.12)
       vue: 3.3.4
-      vue-router: 4.2.1(vue@3.3.4)
+      vue-router: 4.2.2(vue@3.3.4)
       webpack-merge: 5.9.0
     transitivePeerDependencies:
       - less
@@ -3056,8 +3056,8 @@ packages:
       '@vue/devtools-api': 6.5.0
       vue: 3.3.4
 
-  /vue-router@4.2.1(vue@3.3.4):
-    resolution: {integrity: sha512-nW28EeifEp8Abc5AfmAShy5ZKGsGzjcnZ3L1yc2DYUo+MqbBClrRP9yda3dIekM4I50/KnEwo1wkBLf7kHH5Cw==}
+  /vue-router@4.2.2(vue@3.3.4):
+    resolution: {integrity: sha512-cChBPPmAflgBGmy3tBsjeoe3f3VOSG6naKyY5pjtrqLGbNEXdzCigFUHgBvp9e3ysAtFtEx7OLqcSDh/1Cq2TQ==}
     peerDependencies:
       vue: ^3.2.0
     dependencies:

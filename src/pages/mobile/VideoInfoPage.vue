@@ -29,11 +29,7 @@ function switchFold() {
 onMounted(async () => {
   $q.loading.show({ delay: 500 })
 
-  await fetch(`${TAKINA_API}/search`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ url: state.videoId })
-  })
+  await fetch(`${TAKINA_API}/video/${state.videoId}`, { method: "GET" })
     .then(async (resp) => {
       if (resp.ok) {
         return resp.json()

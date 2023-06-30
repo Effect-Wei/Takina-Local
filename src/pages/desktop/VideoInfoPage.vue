@@ -1,11 +1,13 @@
 <script setup>
 import { onMounted, reactive } from "vue"
 import { useRoute } from "vue-router"
+import { useQuasar } from "quasar"
 import MediaProcessor from "components/MediaProcessor.vue"
 import StaffInfo from "components/StaffInfo.vue"
 
 const TAKINA_API = "https://api.takina.one"
 
+const $q = useQuasar()
 const route = useRoute()
 const state = reactive({
   loaded: false,
@@ -15,6 +17,8 @@ const state = reactive({
 })
 
 onMounted(async () => {
+  $q.loading.show({ delay: 500 })
+
   await fetch(`${TAKINA_API}/search`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -42,49 +46,51 @@ onMounted(async () => {
       state.videoInfo.pic = coverUrl.toString()
 
       state.loaded = true
+      $q.loading.hide()
     })
 })
 </script>
 
 <template>
-  <q-page>
-    <div v-if="state.loaded">
-      <div class="video-info-wrapper row justify-center items-start">
-        <div class="cover-area col">
-          <q-img
-            class="cover"
-            :src="state.videoInfo.pic"
-            :initial-ratio="1146 / 717"
-            fit="contain"
-            alt="Video cover"
-            referrerpolicy="no-referrer"
-          />
+  <q-page
+    v-if="state.loaded"
+    class="video-info-wrapper row justify-center items-start"
+  >
+    <div class="cover-area col">
+      <q-img
+        class="cover"
+        :src="state.videoInfo.pic"
+        :initial-ratio="1146 / 717"
+        fit="contain"
+        alt="Video cover"
+        referrerpolicy="no-referrer"
+      />
 
-          <div class="video-info-container q-mt-md q-px-sm">
-            <div class="title text-weight-medium">
-              {{ state.videoInfo.title }}
-            </div>
-            <div class="tname flex items-center">
-              {{ state.videoInfo.tname }}
-            </div>
-
-            <div class="description q-mt-md q-px-sm">
-              {{ state.videoInfo.desc }}
-            </div>
-          </div>
+      <div class="video-info-container q-mt-md q-px-sm">
+        <div class="title text-weight-medium">
+          {{ state.videoInfo.title }}
+        </div>
+        <div class="tname flex items-center">
+          {{ state.videoInfo.tname }}
         </div>
 
-        <div
-          v-if="state.videoNotFound === false"
-          class="right-container column col-auto q-ml-lg"
-        >
-          <staff-info :video-info="state.videoInfo" />
-          <media-processor
-            class="task-creator"
-            :video-info="state.videoInfo"
-          />
+        <q-separator
+          spaced="lg"
+          :dark="$q.dark.isActive"
+        />
+
+        <div class="description q-px-sm">
+          {{ state.videoInfo.desc }}
         </div>
       </div>
+    </div>
+
+    <div
+      v-if="state.videoNotFound === false"
+      class="right-container column col-auto q-ml-lg"
+    >
+      <staff-info :video-info="state.videoInfo" />
+      <media-processor :video-info="state.videoInfo" />
     </div>
   </q-page>
 </template>
@@ -95,19 +101,20 @@ a {
   color: #18191c;
 }
 
-.cover-area {
-  max-width: 50%;
-}
-
 .video-info-wrapper {
   margin: 0 auto;
   width: 80%;
   max-width: 1536px;
 }
 
+.cover-area {
+  max-width: 50%;
+}
+
 .title {
   max-width: 100%;
-  font-size: 20px;
+  font-size: 22px;
+  line-height: 34px;
   white-space: pre-wrap;
 }
 
@@ -120,9 +127,9 @@ a {
 
 .description {
   white-space: pre-wrap;
-  font-size: 14px;
+  font-size: 16px;
   letter-spacing: 0;
-  line-height: 18px;
+  line-height: 26px;
   overflow: hidden;
 }
 

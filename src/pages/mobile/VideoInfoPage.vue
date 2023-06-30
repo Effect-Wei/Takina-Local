@@ -1,11 +1,13 @@
 <script setup>
 import { computed, onMounted, reactive } from "vue"
 import { useRoute } from "vue-router"
+import { useQuasar } from "quasar"
 import MediaProcessor from "components/MediaProcessor.vue"
 import StaffInfoMobile from "components/StaffInfoMobile.vue"
 
 const TAKINA_API = "https://api.takina.one"
 
+const $q = useQuasar()
 const route = useRoute()
 const state = reactive({
   loaded: false,
@@ -25,6 +27,8 @@ function switchFold() {
 }
 
 onMounted(async () => {
+  $q.loading.show({ delay: 500 })
+
   await fetch(`${TAKINA_API}/search`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -52,69 +56,68 @@ onMounted(async () => {
       state.videoInfo.pic = coverUrl.toString()
 
       state.loaded = true
+      $q.loading.hide()
     })
 })
 </script>
 
 <template>
-  <q-page>
-    <div v-if="state.loaded">
-      <q-img
-        class="cover q-mx-auto"
-        :src="state.videoInfo.pic"
-        :initial-ratio="1146 / 717"
-        :width="state.videoNotFound ? '160px' : undefined"
-        fit="contain"
-        alt="Video cover"
-        referrerpolicy="no-referrer"
+  <q-page v-if="state.loaded">
+    <q-img
+      class="cover q-mx-auto"
+      :src="state.videoInfo.pic"
+      :initial-ratio="1146 / 717"
+      :width="state.videoNotFound ? '160px' : undefined"
+      fit="contain"
+      alt="Video cover"
+      referrerpolicy="no-referrer"
+    />
+
+    <div class="video-info-wrapper full-width row">
+      <staff-info-mobile
+        v-if="state.videoNotFound === false"
+        class="full-width"
+        :video-info="state.videoInfo"
       />
 
-      <div class="video-info-wrapper full-width row">
-        <staff-info-mobile
-          v-if="state.videoNotFound === false"
-          class="full-width"
-          :video-info="state.videoInfo"
+      <div
+        class="title-area full-width q-mt-sm"
+        @click.prevent="switchFold"
+      >
+        <q-btn
+          class="fold-switcher"
+          icon="expand_more"
+          size="2.25vmin"
+          round
+          unelevated
+          :style="`transform: rotate(${state.rotate}deg);`"
         />
-
-        <div
-          class="title-area full-width q-mt-sm"
-          @click.prevent="switchFold"
-        >
-          <q-btn
-            class="fold-switcher"
-            icon="expand_more"
-            size="2.25vmin"
-            round
-            unelevated
-            :style="`transform: rotate(${state.rotate}deg);`"
-          />
-          <div class="title">
-            {{ state.videoInfo.title }}
-          </div>
-          <div class="tname flex items-center">
-            {{ state.videoInfo.tname }}
-          </div>
+        <div class="title">
+          {{ state.videoInfo.title }}
         </div>
-
-        <div
-          class="desc-container"
-          :style="
-            state.folded
-              ? 'max-height: 0px;'
-              : `max-height: ${state.descHeight}px;`
-          "
-        >
-          <div class="description">
-            {{ state.videoInfo.desc }}
-          </div>
+        <div class="tname flex items-center">
+          {{ state.videoInfo.tname }}
         </div>
+      </div>
 
-        <div
-          v-if="state.videoNotFound === false"
-          class="full-width q-mt-sm"
-        >
-          <media-processor :video-info="state.videoInfo" />
+      <div
+        class="desc-container"
+        :style="
+          state.folded
+            ? 'max-height: 0px;'
+            : `max-height: ${state.descHeight}px;`
+        "
+      >
+        <div class="description">
+          {{ state.videoInfo.desc }}
         </div>
+      </div>
+
+      <div
+        v-if="state.videoNotFound === false"
+        class="full-width q-mt-sm"
+      >
+        <media-processor :video-info="state.videoInfo" />
       </div>
     </div>
   </q-page>

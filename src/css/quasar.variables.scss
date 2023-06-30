@@ -12,6 +12,9 @@
 // to match your app's branding.
 // Tip: Use the "Theme Builder" on Quasar's documentation website.
 
+$typography-font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue,
+  Helvetica, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif !default;
+
 $primary: #1976d2;
 $secondary: #26a69a;
 $accent: #9c27b0;
@@ -26,4 +29,4 @@ $warning: #f2c037;
 
 $bilipink: #fb7299;
 $bg1: #f1f2f3;
-$bg1-dark: #2e2e2e
+$bg1-dark: #2e2e2e;

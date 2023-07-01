@@ -19,7 +19,7 @@ const state = reactive({
 onMounted(async () => {
   $q.loading.show({ delay: 500 })
 
-  await fetch(`${TAKINA_API}/video/${state.videoId}`, { method: "GET" })
+  await fetch(`${TAKINA_API}/video/${state.videoId}`)
     .then(async (resp) => {
       if (resp.ok) {
         return resp.json()

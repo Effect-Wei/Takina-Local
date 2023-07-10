@@ -49,7 +49,6 @@ onMounted(() => {
     <q-list
       :class="{
         'mode-list': true,
-        'rounded-borders': true,
         'text-dark': true,
         'mode-list-dark': $q.dark.isActive
       }"
@@ -95,6 +94,7 @@ onMounted(() => {
 
 <style scoped lang="scss">
 .mode-list {
+  border-radius: 8px;
   min-width: 200px;
   background: #ffffff;
 }

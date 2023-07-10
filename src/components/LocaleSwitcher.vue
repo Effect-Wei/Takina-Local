@@ -31,7 +31,6 @@ onMounted(() => {
     <q-list
       :class="{
         'locale-list': true,
-        'rounded-borders': true,
         'text-dark': true,
         'locale-list-dark': $q.dark.isActive
       }"
@@ -55,6 +54,7 @@ onMounted(() => {
 
 <style scoped lang="scss">
 .locale-list {
+  border-radius: 8px;
   min-width: 128px;
   background: #ffffff;
 }

@@ -29,9 +29,9 @@ function onMouseLeave() {
 }
 
 async function onLogout() {
-  $q.cookies.remove("DedeUserID", { path: "/" })
-  $q.cookies.remove("SESSDATA", { path: "/" })
-  $q.cookies.remove("bili_jct", { path: "/" })
+  $q.cookies.remove("DedeUserID", { domain: "takina.one", path: "/" })
+  $q.cookies.remove("SESSDATA", { domain: "takina.one", path: "/" })
+  $q.cookies.remove("bili_jct", { domain: "takina.one", path: "/" })
   document.location.reload()
 }
 

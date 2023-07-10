@@ -17,6 +17,7 @@
 
         <q-space />
 
+        <user-profile />
         <dark-mode-switcher />
         <locale-switcher />
       </q-toolbar>
@@ -32,6 +33,7 @@
 import { useRouter } from "vue-router"
 import DarkModeSwitcher from "components/DarkModeSwitcher.vue"
 import LocaleSwitcher from "components/LocaleSwitcher.vue"
+import UserProfile from "components/UserProfile.vue"
 
 const router = useRouter()
 </script>

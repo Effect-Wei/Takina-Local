@@ -92,11 +92,6 @@ onMounted(async () => {
 </template>
 
 <style scoped lang="scss">
-a {
-  text-decoration: none;
-  color: #18191c;
-}
-
 .video-info-wrapper {
   margin: 0 auto;
   width: 80%;
@@ -115,7 +110,7 @@ a {
 }
 
 .tname {
-  color: #9499a0;
+  color: $text2;
   height: 20px;
   font-size: 13px;
   line-height: 18px;

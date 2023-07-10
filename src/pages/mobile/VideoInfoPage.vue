@@ -120,11 +120,6 @@ onMounted(async () => {
 </template>
 
 <style scoped lang="scss">
-a {
-  text-decoration: none;
-  color: #18191c;
-}
-
 .cover {
   display: block;
 }
@@ -142,7 +137,7 @@ a {
 }
 
 .tname {
-  color: #9499a0;
+  color: $text2;
   height: 5.5vmin;
   font-size: 2.5vmin;
   line-height: 5vmin;
@@ -161,7 +156,7 @@ a {
 }
 
 .description {
-  color: #9499a0;
+  color: $text2;
   white-space: pre-wrap;
   font-size: 3vmin;
   letter-spacing: 0;

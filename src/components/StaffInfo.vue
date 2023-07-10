@@ -106,7 +106,7 @@ function switchFold() {
 <style scoped lang="scss">
 a {
   text-decoration: none;
-  color: #18191c;
+  color: $dark;
 }
 
 .staff-info-header {
@@ -127,7 +127,7 @@ a {
 }
 
 .total-staff {
-  color: #9499a0;
+  color: $text2;
 }
 
 .staff-container {
@@ -146,6 +146,6 @@ a {
 
 .info-tag {
   font-size: 13px;
-  color: #9499a0;
+  color: $text2;
 }
 </style>

@@ -82,7 +82,7 @@ const onlyOneStaff = computed(() => {
 <style scoped lang="scss">
 a {
   text-decoration: none;
-  color: #18191c;
+  color: $dark;
 }
 
 .staff-info-header {
@@ -106,7 +106,7 @@ a {
 
 .total-staff {
   margin-left: 5px;
-  color: #9499a0;
+  color: $text2;
 }
 
 .staff-container {
@@ -136,6 +136,6 @@ a {
 
 .info-tag {
   font-size: 3vmin;
-  color: #9499a0;
+  color: $text2;
 }
 </style>

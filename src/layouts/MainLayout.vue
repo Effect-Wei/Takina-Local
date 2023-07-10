@@ -60,4 +60,12 @@ const router = useRouter()
 .bg-bg1-dark {
   background: $bg1-dark !important;
 }
+
+.text-text2 {
+  color: $text2 !important;
+}
+
+.bg-text2 {
+  background: $text2 !important;
+}
 </style>

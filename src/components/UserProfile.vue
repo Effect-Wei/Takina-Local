@@ -10,7 +10,8 @@ const state = reactive({
   isLogin: false,
   hoverTimeout: -1,
   userInfo: {},
-  userStat: {}
+  userStat: {},
+  sessdata: ""
 })
 const DEFAULT_AVATAR = "https://i0.hdslb.com/bfs/face/member/noface.jpg"
 
@@ -32,18 +33,25 @@ async function onLogout() {
   $q.cookies.remove("DedeUserID", { domain: "takina.one", path: "/" })
   $q.cookies.remove("SESSDATA", { domain: "takina.one", path: "/" })
   $q.cookies.remove("bili_jct", { domain: "takina.one", path: "/" })
-  document.location.reload()
+  await initLoadUserInfo()
 }
 
-onMounted(async () => {
-  //await fetch("http://localhost:8787/test", { credentials: "include" })
-  await fetch("https://api.takina.one/nav", { credentials: "include" }).then(
-    async (resp) => {
-      let userInfo = await resp.json()
-      state.userInfo = userInfo.data
-      state.isLogin = userInfo.data.isLogin
-    }
-  )
+async function onSetCookie() {
+  if (state.sessdata != "") {
+    $q.cookies.remove("SESSDATA", { domain: "takina.one", path: "/" })
+    document.cookie = `SESSDATA=${state.sessdata}; Expires=30; domain=takina.one; path=/`
+    await initLoadUserInfo()
+  }
+}
+
+async function initLoadUserInfo() {
+  await fetch("https://api.takina.one/nav", {
+    credentials: "include"
+  }).then(async (resp) => {
+    let userInfo = await resp.json()
+    state.userInfo = userInfo.data
+    state.isLogin = userInfo.data.isLogin
+  })
   await fetch("https://api.takina.one/nav/stat", {
     credentials: "include"
   }).then(async (resp) => {
@@ -52,6 +60,10 @@ onMounted(async () => {
   })
 
   state.isLoaded = true
+}
+
+onMounted(async () => {
+  await initLoadUserInfo()
 })
 </script>
 
@@ -95,7 +107,7 @@ onMounted(async () => {
           'user-info--hide': !state.isHovered
         }"
       >
-        <span class="user-name column items-center">
+        <span class="user-name column items-center justify-center">
           {{ state.userInfo.uname }}
         </span>
 
@@ -173,6 +185,8 @@ onMounted(async () => {
       </div>
     </div>
 
+    <!----------------------------------------------------------------->
+
     <div
       v-if="!state.isLogin"
       class="user-info-container"
@@ -186,11 +200,29 @@ onMounted(async () => {
           'user-info--hide': !state.isHovered
         }"
       >
-        <span class="user-name user-name--no-login column items-center">
+        <span
+          class="user-name user-name--no-login column items-center justify-center"
+        >
           还没有登录哦
         </span>
 
-        <div class="user-info-content q-px-lg"></div>
+        <div class="user-info-content q-px-lg">
+          <q-separator spaced />
+          <q-input
+            v-model="state.sessdata"
+            label="SESSDATA"
+            filled
+            dense
+          >
+            <template #after>
+              <q-btn
+                icon="check"
+                color="primary"
+                @click="onSetCookie()"
+              />
+            </template>
+          </q-input>
+        </div>
       </div>
     </div>
   </div>
@@ -226,6 +258,7 @@ onMounted(async () => {
 }
 
 .user-name {
+  height: 36px;
   max-width: 184px;
   margin-right: 114px;
   font-size: 24px;

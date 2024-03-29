@@ -10,7 +10,7 @@ dependencies:
     version: 0.11.6
   '@quasar/extras':
     specifier: ^1.16.5
-    version: 1.16.10
+    version: 1.16.11
   quasar:
     specifier: ^2.12.3
     version: 2.15.1
@@ -345,8 +345,8 @@ packages:
       - supports-color
     dev: true
 
-  /@quasar/extras@1.16.10:
-    resolution: {integrity: sha512-Gmj36x2eeXhbdJmEXdQ8QiM+AL7PLpVW8O8OpiMx6z1ch/Fqy2ZycTaTNtrEw0IWlKDlUULg+S4DltMqdwSXZQ==}
+  /@quasar/extras@1.16.11:
+    resolution: {integrity: sha512-sbTBHOA+Hi7ah0P6qSm+xfRXqwJ94ct3NKA3Lkq3iNPYuHD7VXbSWtP2eA7Cu9Fd0WjVoPbngf6yFGg46U3IfQ==}
     dev: false
 
   /@quasar/render-ssr-error@1.0.3:

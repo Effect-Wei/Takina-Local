@@ -29,8 +29,8 @@ devDependencies:
     specifier: ^0.11.0
     version: 0.11.0
   '@intlify/vite-plugin-vue-i18n':
-    specifier: ^6.0.3
-    version: 6.0.3(vite@2.9.17)(vue-i18n@9.10.2)
+    specifier: ^7.0.0
+    version: 7.0.0(vite@2.9.17)(vue-i18n@9.10.2)
   '@quasar/app-vite':
     specifier: ^1.4.3
     version: 1.8.0(eslint@8.57.0)(quasar@2.15.2)(vue-router@4.3.0)(vue@3.4.21)
@@ -216,9 +216,10 @@ packages:
     engines: {node: '>= 16'}
     dev: true
 
-  /@intlify/vite-plugin-vue-i18n@6.0.3(vite@2.9.17)(vue-i18n@9.10.2):
-    resolution: {integrity: sha512-6SgNzPAOCR90wvt368lKzi7f/5ZEWJn22UCGvhFsP3XvKqlF3cVzojahgQ6o+LTdCkExeM6wPgd+haFf28E9VQ==}
+  /@intlify/vite-plugin-vue-i18n@7.0.0(vite@2.9.17)(vue-i18n@9.10.2):
+    resolution: {integrity: sha512-2TbDOQ8XD+vkc0s5OFmr+IY/k4mYMC7pzvx0xGQn+cU/ev314+yi7Z7N7rWcBgiYk1WOUalbGSo3d4nJDxOOyw==}
     engines: {node: '>= 14.6'}
+    deprecated: This plugin support until Vite 3. If you would like to use on Vite 4, please use @intlify/unplugin-vue-i18n
     peerDependencies:
       petite-vue-i18n: '*'
       vite: ^2.9.0 || ^3.0.0

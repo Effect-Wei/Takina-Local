@@ -16,7 +16,7 @@ importers:
         version: 1.16.11
       quasar:
         specifier: ^2.12.3
-        version: 2.15.3
+        version: 2.15.4
       vue:
         specifier: ^3.3.4
         version: 3.4.24
@@ -35,7 +35,7 @@ importers:
         version: 7.0.0(vite@2.9.18(sass@1.75.0))(vue-i18n@9.13.1(vue@3.4.24))
       '@quasar/app-vite':
         specifier: ^1.4.3
-        version: 1.8.3(eslint@8.57.0)(quasar@2.15.3)(rollup@2.77.3)(vue-router@4.3.2(vue@3.4.24))(vue@3.4.24)
+        version: 1.8.3(eslint@8.57.0)(quasar@2.15.4)(rollup@2.77.3)(vue-router@4.3.2(vue@3.4.24))(vue@3.4.24)
       '@types/node':
         specifier: 20.12.7
         version: 20.12.7
@@ -1463,8 +1463,8 @@ packages:
     resolution: {integrity: sha512-MvjoMCJwEarSbUYk5O+nmoSzSutSsTwF85zcHPQ9OrlFoZOYIjaqBAJIqIXjptyD5vThxGq52Xu/MaJzRkIk4Q==}
     engines: {node: '>=0.6'}
 
-  quasar@2.15.3:
-    resolution: {integrity: sha512-+6g6D1t/O95dhuov4b6SwR3asowr01xwV1A2JWh5cVQc1hTmolXzgQNPbrOApLjGX7N1cQ119DWajJ/G8KzXPQ==}
+  quasar@2.15.4:
+    resolution: {integrity: sha512-6Rtj0KrsVA0IV9zMZ6R7U7hOpwLS/6E06hsISVHRPn21KEm3XAwHdvy9xWz5kwqWraHRlcisFSDu/KPL4VQK1w==}
     engines: {node: '>= 10.18.1', npm: '>= 6.13.4', yarn: '>= 1.21.1'}
 
   queue-microtask@1.2.3:
@@ -2020,10 +2020,10 @@ snapshots:
 
   '@pkgr/core@0.1.1': {}
 
-  '@quasar/app-vite@1.8.3(eslint@8.57.0)(quasar@2.15.3)(rollup@2.77.3)(vue-router@4.3.2(vue@3.4.24))(vue@3.4.24)':
+  '@quasar/app-vite@1.8.3(eslint@8.57.0)(quasar@2.15.4)(rollup@2.77.3)(vue-router@4.3.2(vue@3.4.24))(vue@3.4.24)':
     dependencies:
       '@quasar/render-ssr-error': 1.0.3
-      '@quasar/vite-plugin': 1.6.0(@vitejs/plugin-vue@2.3.4(vite@2.9.18(sass@1.75.0))(vue@3.4.24))(quasar@2.15.3)(vite@2.9.18(sass@1.75.0))(vue@3.4.24)
+      '@quasar/vite-plugin': 1.6.0(@vitejs/plugin-vue@2.3.4(vite@2.9.18(sass@1.75.0))(vue@3.4.24))(quasar@2.15.4)(vite@2.9.18(sass@1.75.0))(vue@3.4.24)
       '@rollup/pluginutils': 4.2.1
       '@types/chrome': 0.0.208
       '@types/compression': 1.7.5
@@ -2048,7 +2048,7 @@ snapshots:
       lodash: 4.17.21
       minimist: 1.2.8
       open: 8.4.2
-      quasar: 2.15.3
+      quasar: 2.15.4
       register-service-worker: 1.7.2
       rollup-plugin-visualizer: 5.12.0(rollup@2.77.3)
       sass: 1.75.0
@@ -2073,10 +2073,10 @@ snapshots:
     dependencies:
       stack-trace: 1.0.0-pre2
 
-  '@quasar/vite-plugin@1.6.0(@vitejs/plugin-vue@2.3.4(vite@2.9.18(sass@1.75.0))(vue@3.4.24))(quasar@2.15.3)(vite@2.9.18(sass@1.75.0))(vue@3.4.24)':
+  '@quasar/vite-plugin@1.6.0(@vitejs/plugin-vue@2.3.4(vite@2.9.18(sass@1.75.0))(vue@3.4.24))(quasar@2.15.4)(vite@2.9.18(sass@1.75.0))(vue@3.4.24)':
     dependencies:
       '@vitejs/plugin-vue': 2.3.4(vite@2.9.18(sass@1.75.0))(vue@3.4.24)
-      quasar: 2.15.3
+      quasar: 2.15.4
       vite: 2.9.18(sass@1.75.0)
       vue: 3.4.24
 
@@ -3332,7 +3332,7 @@ snapshots:
     dependencies:
       side-channel: 1.0.6
 
-  quasar@2.15.3: {}
+  quasar@2.15.4: {}
 
   queue-microtask@1.2.3: {}
 

@@ -225,7 +225,8 @@ onMounted(async () => {
   document.body.appendChild(state.mediaExportLink)
 
   // eslint-disable-next-line prettier/prettier
-  await ffmpeg.load()
+  await ffmpeg
+    .load()
     .then(() => {
       state.msg = "Waiting for your command~"
     })

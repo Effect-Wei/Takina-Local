@@ -35,7 +35,7 @@ importers:
         version: 7.0.0(vite@2.9.18(sass@1.75.0))(vue-i18n@9.13.1(vue@3.4.25))
       '@quasar/app-vite':
         specifier: ^1.4.3
-        version: 1.8.4(eslint@8.57.0)(quasar@2.15.4)(rollup@2.77.3)(vue-router@4.3.2(vue@3.4.25))(vue@3.4.25)
+        version: 1.8.5(eslint@8.57.0)(quasar@2.15.4)(rollup@2.77.3)(vue-router@4.3.2(vue@3.4.25))(vue@3.4.25)
       '@types/node':
         specifier: 20.12.7
         version: 20.12.7
@@ -139,16 +139,16 @@ packages:
     resolution: {integrity: sha512-+bcQRkJO9pcX8d0gel9ZNfrzU22sZFSA0WVhfXrf5jdJOS24a+Bp8pozuS9sBI9Hk/tGz83pgKfmqcn/Ci7/8w==}
     engines: {node: '>= 16'}
 
-  '@intlify/message-compiler@10.0.0-alpha.2':
-    resolution: {integrity: sha512-OGwttsMwB2BUzhZLraoAfAqcza5UyLMEU013ort3LbmdE6ke/pFONFyxjNQdmFWzW2K868AIVgwx4zo8lbmhjg==}
+  '@intlify/message-compiler@10.0.0-alpha.3':
+    resolution: {integrity: sha512-WjM1KAl5enpOfprfVAJ3FzwACmizZFPgyV0sn+QXoWH8BG2ahVkf7uVEqQH0mvUr2rKKaScwpzhH3wZ5F7ZdPw==}
     engines: {node: '>= 16'}
 
   '@intlify/message-compiler@9.13.1':
     resolution: {integrity: sha512-SKsVa4ajYGBVm7sHMXd5qX70O2XXjm55zdZB3VeMFCvQyvLew/dLvq3MqnaIsTMF1VkkOb9Ttr6tHcMlyPDL9w==}
     engines: {node: '>= 16'}
 
-  '@intlify/shared@10.0.0-alpha.2':
-    resolution: {integrity: sha512-pWlpsC3IqkDuIH/5bNlyyiUbAXYymeNXkznORzPWT3qpAe8MazPOm14wMHGn/wESCdB5b9txQson4+CH0ym1hQ==}
+  '@intlify/shared@10.0.0-alpha.3':
+    resolution: {integrity: sha512-fi2q48i+C6sSCAt3vOj/9LD3tkr1wcvLt+ifZEHrpPiwHCyKLDYGp5qBNUHUBBA/iqFTeWdtHUbHE9z9OeTXkw==}
     engines: {node: '>= 16'}
 
   '@intlify/shared@9.13.1':
@@ -208,8 +208,8 @@ packages:
     resolution: {integrity: sha512-cq8o4cWH0ibXh9VGi5P20Tu9XF/0fFXl9EUinr9QfTM7a7p0oTA4iJRCQWppXR1Pg8dSM0UCItCkPwsk9qWWYA==}
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
 
-  '@quasar/app-vite@1.8.4':
-    resolution: {integrity: sha512-xgSNcy0rtII6EyisNbpMfVnOgLv4rcw0CtI+cxLrY55T6+ZJZs+W1ZVsa2YgPtk9fx40YQrHieCH/YQ2zYLIHQ==}
+  '@quasar/app-vite@1.8.5':
+    resolution: {integrity: sha512-OB5nU9qKIl3p7Ton9fLWkSQTv1I/7slfQl8izhZPPJZRY755Jn4Kz1exYUoEgJJ4cLSaUI/cpnVOL59pw53NEg==}
     engines: {node: ^24 || ^22 || ^20 || ^18 || ^16 || ^14.19, npm: '>= 6.14.12', yarn: '>= 1.17.3'}
     hasBin: true
     peerDependencies:
@@ -1943,8 +1943,8 @@ snapshots:
 
   '@intlify/bundle-utils@3.4.0(vue-i18n@9.13.1(vue@3.4.25))':
     dependencies:
-      '@intlify/message-compiler': 10.0.0-alpha.2
-      '@intlify/shared': 10.0.0-alpha.2
+      '@intlify/message-compiler': 10.0.0-alpha.3
+      '@intlify/shared': 10.0.0-alpha.3
       jsonc-eslint-parser: 1.4.1
       source-map: 0.6.1
       yaml-eslint-parser: 0.3.2
@@ -1956,9 +1956,9 @@ snapshots:
       '@intlify/message-compiler': 9.13.1
       '@intlify/shared': 9.13.1
 
-  '@intlify/message-compiler@10.0.0-alpha.2':
+  '@intlify/message-compiler@10.0.0-alpha.3':
     dependencies:
-      '@intlify/shared': 10.0.0-alpha.2
+      '@intlify/shared': 10.0.0-alpha.3
       source-map-js: 1.2.0
 
   '@intlify/message-compiler@9.13.1':
@@ -1966,14 +1966,14 @@ snapshots:
       '@intlify/shared': 9.13.1
       source-map-js: 1.2.0
 
-  '@intlify/shared@10.0.0-alpha.2': {}
+  '@intlify/shared@10.0.0-alpha.3': {}
 
   '@intlify/shared@9.13.1': {}
 
   '@intlify/vite-plugin-vue-i18n@7.0.0(vite@2.9.18(sass@1.75.0))(vue-i18n@9.13.1(vue@3.4.25))':
     dependencies:
       '@intlify/bundle-utils': 3.4.0(vue-i18n@9.13.1(vue@3.4.25))
-      '@intlify/shared': 10.0.0-alpha.2
+      '@intlify/shared': 10.0.0-alpha.3
       '@rollup/pluginutils': 4.2.1
       debug: 4.3.4
       fast-glob: 3.3.1
@@ -2020,7 +2020,7 @@ snapshots:
 
   '@pkgr/core@0.1.1': {}
 
-  '@quasar/app-vite@1.8.4(eslint@8.57.0)(quasar@2.15.4)(rollup@2.77.3)(vue-router@4.3.2(vue@3.4.25))(vue@3.4.25)':
+  '@quasar/app-vite@1.8.5(eslint@8.57.0)(quasar@2.15.4)(rollup@2.77.3)(vue-router@4.3.2(vue@3.4.25))(vue@3.4.25)':
     dependencies:
       '@quasar/render-ssr-error': 1.0.3
       '@quasar/vite-plugin': 1.6.0(@vitejs/plugin-vue@2.3.4(vite@2.9.18(sass@1.75.0))(vue@3.4.25))(quasar@2.15.4)(vite@2.9.18(sass@1.75.0))(vue@3.4.25)

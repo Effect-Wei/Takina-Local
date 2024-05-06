@@ -5,7 +5,7 @@ module.exports = {
   root: true,
 
   parserOptions: {
-    ecmaVersion: "2021" // Allows for the parsing of modern ECMAScript features
+    ecmaVersion: "2022" // Allows for the parsing of modern ECMAScript features
   },
 
   env: {
@@ -19,7 +19,7 @@ module.exports = {
     "eslint:recommended",
     "plugin:prettier/recommended",
     "plugin:vue/vue3-recommended",
-    "@vue/eslint-config-prettier"
+    "prettier"
   ],
 
   plugins: [

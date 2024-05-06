@@ -1,5 +1,6 @@
 <script setup>
-import { createFFmpeg } from "@ffmpeg/ffmpeg"
+import { FFmpeg } from "@ffmpeg/ffmpeg"
+import { toBlobURL } from "@ffmpeg/util"
 import { onMounted, reactive } from "vue"
 import { useQuasar } from "quasar"
 const $q = useQuasar()
@@ -28,14 +29,7 @@ const props = defineProps({
     }
   }
 })
-const ffmpeg = createFFmpeg({
-  log: true,
-  progress: ({ ratio }) => {
-    state.progress = 100 * ratio
-  },
-  corePath:
-    "https://cdnjs.assets.moe/ajax/libs/ffmpeg-core/0.11.0/ffmpeg-core.js"
-})
+const ffmpeg = new FFmpeg()
 const quality = {
   video: {
     6: "240P 极速",
@@ -111,8 +105,7 @@ async function fetchMedia() {
 
   await Promise.all(promises).then(async (result) => {
     if ((state.downloadType & 1) === 1) {
-      ffmpeg.FS(
-        "writeFile",
+      await ffmpeg.writeFile(
         "video.m4v",
         await result[0].blob().then(async (blob) => {
           return new Uint8Array(await blob.arrayBuffer())
@@ -121,8 +114,7 @@ async function fetchMedia() {
     }
 
     if ((state.downloadType & 2) === 2) {
-      ffmpeg.FS(
-        "writeFile",
+      await ffmpeg.writeFile(
         "audio.m4a",
         await result[1].blob().then(async (blob) => {
           return new Uint8Array(await blob.arrayBuffer())
@@ -139,7 +131,7 @@ async function transcode() {
   state.indeterminate = false
 
   if (state.downloadType == 1) {
-    await ffmpeg.run(
+    await ffmpeg.exec([
       "-i",
       "video.m4v",
       "-vcodec",
@@ -147,9 +139,9 @@ async function transcode() {
       "-strict",
       "unofficial",
       "video.mp4"
-    )
+    ])
   } else if (state.downloadType == 2) {
-    await ffmpeg.run(
+    await ffmpeg.exec([
       "-i",
       "audio.m4a",
       "-acodec",
@@ -157,9 +149,9 @@ async function transcode() {
       "-strict",
       "unofficial",
       "audio.mp3"
-    )
+    ])
   } else {
-    await ffmpeg.run(
+    await ffmpeg.exec([
       "-i",
       "video.m4v",
       "-i",
@@ -171,7 +163,7 @@ async function transcode() {
       "-strict",
       "unofficial",
       "video.mp4"
-    )
+    ])
   }
 
   state.msg = "Completed!"
@@ -183,8 +175,7 @@ async function exportMedia() {
   const videoQuality = quality.video[video.id]
   const audioQuality = quality.audio[audio.id]
   const codec = quality.codec[video.codecid]
-  const data = ffmpeg.FS(
-    "readFile",
+  const data = await ffmpeg.readFile(
     state.downloadType == 2 ? "audio.mp3" : "video.mp4"
   )
 
@@ -224,9 +215,29 @@ onMounted(async () => {
   state.mediaExportLink.style.display = "none"
   document.body.appendChild(state.mediaExportLink)
 
-  // eslint-disable-next-line prettier/prettier
+  const baseURL = "https://unpkg.com/@ffmpeg/core-mt@0.12.6/dist/esm"
+  ffmpeg.on("log", ({ message: msg }) => {
+    console.log(msg)
+  })
+  ffmpeg.on("progress", ({ progress }) => {
+    state.progress = 100 * progress
+  })
+
   await ffmpeg
-    .load()
+    .load({
+      coreURL: await toBlobURL(
+        `${baseURL}/ffmpeg-core.js`,
+        "application/javascript"
+      ),
+      wasmURL: await toBlobURL(
+        `${baseURL}/ffmpeg-core.wasm`,
+        "application/wasm"
+      ),
+      workerURL: await toBlobURL(
+        `${baseURL}/ffmpeg-core.worker.js`,
+        "application/javascript"
+      )
+    })
     .then(() => {
       state.msg = "Waiting for your command~"
     })

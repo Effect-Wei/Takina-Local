@@ -3,8 +3,9 @@
   "version": "0.0.1",
   "description": "Local Version of Takina",
   "productName": "Takina - Bilibili 视频在线下载器",
-  "productDescription": "Bilibili 视频在线下载器，同时支持移动端与 PC 端",
+  "productDescription": "Bilibili 视频在线下载器",
   "author": "Effect-Wei <effect-w@outlook.com>",
+  "type": "module",
   "private": true,
   "scripts": {
     "lint": "eslint --fix --ext .js,.vue ./",
@@ -14,7 +15,8 @@
     "build": "quasar build"
   },
   "dependencies": {
-    "@ffmpeg/ffmpeg": "^0.11.6",
+    "@ffmpeg/ffmpeg": "^0.12.10",
+    "@ffmpeg/util": "^0.12.1",
     "@quasar/extras": "^1.16.5",
     "quasar": "^2.12.3",
     "vue": "^3.3.4",
@@ -23,17 +25,16 @@
   },
   "devDependencies": {
     "@ffmpeg/core": "^0.11.0",
-    "@intlify/vite-plugin-vue-i18n": "^7.0.0",
-    "@quasar/app-vite": "^1.4.3",
-    "@types/node": "20.12.7",
-    "@vue/eslint-config-prettier": "^9.0.0",
+    "@intlify/unplugin-vue-i18n": "^2.0.0",
+    "@quasar/app-vite": "^2.0.0-beta.5",
     "autoprefixer": "^10.4.14",
     "eslint": "^8.46.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-vue": "^9.16.0",
     "postcss": "^8.4.31",
-    "prettier": "^3.0.0"
+    "prettier": "^3.0.0",
+    "vite-plugin-checker": "^0.6.4"
   },
   "engines": {
     "node": "^20",

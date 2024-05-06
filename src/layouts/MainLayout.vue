@@ -9,7 +9,7 @@
         >
           <q-avatar>
             <img
-              src="https://jsd.assets.moe/gh/Effect-Wei/for-jsDelivr@1.8/avatar-128.jpg"
+              src="https://cdn.jsdelivr.net/gh/Effect-Wei/for-jsDelivr@1.8/avatar-128.jpg"
             />
           </q-avatar>
           Takina

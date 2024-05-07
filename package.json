@@ -18,14 +18,14 @@
     "@ffmpeg/ffmpeg": "^0.12.10",
     "@ffmpeg/util": "^0.12.1",
     "@quasar/extras": "^1.16.11",
-    "quasar": "^2.15.4",
-    "vue": "^3.4.26",
+    "quasar": "^2.16.1",
+    "vue": "^3.4.27",
     "vue-i18n": "^9.13.1",
     "vue-router": "^4.3.2"
   },
   "devDependencies": {
     "@intlify/unplugin-vue-i18n": "^4.0.0",
-    "@quasar/app-vite": "2.0.0-beta.11",
+    "@quasar/app-vite": "^2.0.0-beta.12",
     "autoprefixer": "^10.4.19",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",

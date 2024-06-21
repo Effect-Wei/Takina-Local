@@ -28,14 +28,14 @@ importers:
         version: 9.13.1(vue@3.4.29)
       vue-router:
         specifier: ^4.3.2
-        version: 4.3.3(vue@3.4.29)
+        version: 4.4.0(vue@3.4.29)
     devDependencies:
       '@intlify/unplugin-vue-i18n':
         specifier: ^4.0.0
         version: 4.0.0(rollup@4.17.2)(vue-i18n@9.13.1(vue@3.4.29))
       '@quasar/app-vite':
         specifier: ^2.0.0-beta.12
-        version: 2.0.0-beta.14(@types/node@20.12.11)(eslint@8.57.0)(quasar@2.16.4)(rollup@4.17.2)(terser@5.31.0)(vue-router@4.3.3(vue@3.4.29))(vue@3.4.29)
+        version: 2.0.0-beta.14(@types/node@20.12.11)(eslint@8.57.0)(quasar@2.16.4)(rollup@4.17.2)(terser@5.31.0)(vue-router@4.4.0(vue@3.4.29))(vue@3.4.29)
       autoprefixer:
         specifier: ^10.4.19
         version: 10.4.19(postcss@8.4.38)
@@ -2195,8 +2195,8 @@ packages:
     peerDependencies:
       vue: ^3.0.0
 
-  vue-router@4.3.3:
-    resolution: {integrity: sha512-8Q+u+WP4N2SXY38FDcF2H1dUEbYVHVPtPCPZj/GTZx8RCbiB8AtJP9+YIxn4Vs0svMTNQcLIzka4GH7Utkx9xQ==}
+  vue-router@4.4.0:
+    resolution: {integrity: sha512-HB+t2p611aIZraV2aPSRNXf0Z/oLZFrlygJm+sZbdJaW6lcFqEDQwnzUBXn+DApw+/QzDU/I9TeWx9izEjTmsA==}
     peerDependencies:
       vue: ^3.2.0
 
@@ -2539,7 +2539,7 @@ snapshots:
 
   '@pkgr/core@0.1.1': {}
 
-  '@quasar/app-vite@2.0.0-beta.14(@types/node@20.12.11)(eslint@8.57.0)(quasar@2.16.4)(rollup@4.17.2)(terser@5.31.0)(vue-router@4.3.3(vue@3.4.29))(vue@3.4.29)':
+  '@quasar/app-vite@2.0.0-beta.14(@types/node@20.12.11)(eslint@8.57.0)(quasar@2.16.4)(rollup@4.17.2)(terser@5.31.0)(vue-router@4.4.0(vue@3.4.29))(vue@3.4.29)':
     dependencies:
       '@quasar/render-ssr-error': 1.0.3
       '@quasar/ssl-certificate': 1.0.0
@@ -2578,7 +2578,7 @@ snapshots:
       table: 6.8.2
       vite: 5.2.11(@types/node@20.12.11)(sass@1.77.0)(terser@5.31.0)
       vue: 3.4.29
-      vue-router: 4.3.3(vue@3.4.29)
+      vue-router: 4.4.0(vue@3.4.29)
       webpack-merge: 5.10.0
     optionalDependencies:
       eslint: 8.57.0
@@ -4437,7 +4437,7 @@ snapshots:
       '@vue/devtools-api': 6.6.1
       vue: 3.4.29
 
-  vue-router@4.3.3(vue@3.4.29):
+  vue-router@4.4.0(vue@3.4.29):
     dependencies:
       '@vue/devtools-api': 6.6.3
       vue: 3.4.29

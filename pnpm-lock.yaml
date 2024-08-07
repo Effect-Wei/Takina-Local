@@ -35,7 +35,7 @@ importers:
         version: 4.0.0(rollup@4.20.0)(vue-i18n@9.13.1(vue@3.4.36))
       '@quasar/app-vite':
         specifier: ^2.0.0-beta.12
-        version: 2.0.0-beta.17(@types/node@22.1.0)(eslint@8.57.0)(quasar@2.16.7)(rollup@4.20.0)(terser@5.31.3)(vue-router@4.4.3(vue@3.4.36))(vue@3.4.36)
+        version: 2.0.0-beta.18(@types/node@22.1.0)(eslint@8.57.0)(quasar@2.16.7)(rollup@4.20.0)(terser@5.31.3)(vue-router@4.4.3(vue@3.4.36))(vue@3.4.36)
       autoprefixer:
         specifier: ^10.4.19
         version: 10.4.20(postcss@8.4.41)
@@ -518,8 +518,8 @@ packages:
     resolution: {integrity: sha512-cq8o4cWH0ibXh9VGi5P20Tu9XF/0fFXl9EUinr9QfTM7a7p0oTA4iJRCQWppXR1Pg8dSM0UCItCkPwsk9qWWYA==}
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
 
-  '@quasar/app-vite@2.0.0-beta.17':
-    resolution: {integrity: sha512-hwhcS+nOaEBbDL4RPnZFSly+uNmrTdPKbEzC32/vS1m6Y1aTZwyOFvpKkSG2R5mcYFjfop3bLQjRlVXm7BBzaQ==}
+  '@quasar/app-vite@2.0.0-beta.18':
+    resolution: {integrity: sha512-m6vSAMpAK0q4kqiOpMtBW4xSxYGvMm1pCvrB0AJKdtseNzqREV/h+C0JLkB+kfTGBU+lQIs5hgHGdOBYkVlhyg==}
     engines: {node: ^30 || ^28 || ^26 || ^24 || ^22 || ^20 || ^18, npm: '>= 6.14.12', yarn: '>= 1.17.3'}
     hasBin: true
     peerDependencies:
@@ -2182,6 +2182,14 @@ packages:
     resolution: {integrity: sha512-o5sSPKEkg/DIQNmH43V0/uerLrpzVedkUh8tGNvaeXpfpuwjKenlSox/2O/BTlZUtEe+JG7s5YhEz608PlAHRA==}
     engines: {node: '>=0.6'}
 
+  ts-essentials@9.4.2:
+    resolution: {integrity: sha512-mB/cDhOvD7pg3YCLk2rOtejHjjdSi9in/IBYE13S+8WA5FBSraYf4V/ws55uvs0IvQ/l0wBOlXy5yBNZ9Bl8ZQ==}
+    peerDependencies:
+      typescript: '>=4.1.0'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+
   tslib@2.6.3:
     resolution: {integrity: sha512-xNvxJEOUiWPGhUuUdQgAJPKOOJfGnIyKySOc09XkKsgdUV/3E2zvwZYdejjmRgPCgcym1juLH3226yA7sEFJKQ==}
 
@@ -2754,7 +2762,7 @@ snapshots:
 
   '@pkgr/core@0.1.1': {}
 
-  '@quasar/app-vite@2.0.0-beta.17(@types/node@22.1.0)(eslint@8.57.0)(quasar@2.16.7)(rollup@4.20.0)(terser@5.31.3)(vue-router@4.4.3(vue@3.4.36))(vue@3.4.36)':
+  '@quasar/app-vite@2.0.0-beta.18(@types/node@22.1.0)(eslint@8.57.0)(quasar@2.16.7)(rollup@4.20.0)(terser@5.31.3)(vue-router@4.4.3(vue@3.4.36))(vue@3.4.36)':
     dependencies:
       '@quasar/render-ssr-error': 1.0.3
       '@quasar/ssl-certificate': 1.0.0
@@ -2790,6 +2798,7 @@ snapshots:
       semver: 7.6.3
       serialize-javascript: 6.0.2
       table: 6.8.2
+      ts-essentials: 9.4.2
       vite: 5.3.5(@types/node@22.1.0)(sass@1.77.8)(terser@5.31.3)
       vue: 3.4.36
       vue-router: 4.4.3(vue@3.4.36)
@@ -2805,6 +2814,7 @@ snapshots:
       - sugarss
       - supports-color
       - terser
+      - typescript
 
   '@quasar/extras@1.16.12': {}
 
@@ -4543,6 +4553,8 @@ snapshots:
       is-number: 7.0.0
 
   toidentifier@1.0.1: {}
+
+  ts-essentials@9.4.2: {}
 
   tslib@2.6.3: {}
 
